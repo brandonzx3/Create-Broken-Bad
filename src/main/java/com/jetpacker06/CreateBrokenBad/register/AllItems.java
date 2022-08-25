@@ -2,6 +2,9 @@ package com.jetpacker06.CreateBrokenBad.register;
 
 import com.jetpacker06.CreateBrokenBad.CreateBrokenBad;
 import com.jetpacker06.CreateBrokenBad.item.*;
+import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.material.FlowingFluid;
@@ -25,7 +28,16 @@ public class AllItems {
     RED_PHOSPHORUS = ingredient("red_phosphorus"),
     BRINE = ingredient("brine"),
     IODINE = ingredient("iodine"),
-    WHITE_METH = ITEMS.register("white_meth", () -> new MethItem.White(new Item.Properties().tab(ItemGroup.CREATEBB))),
+    WHITE_METH = ITEMS.register("white_meth", () -> new MethItem.White(new Item.Properties()
+            .tab(ItemGroup.CREATEBB)
+            .food(new FoodProperties.Builder().nutrition(2).saturationMod(0f).alwaysEat()
+                    .effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 30 * 20, 2), 1.0f)
+                    .effect(new MobEffectInstance(MobEffects.ABSORPTION, 30 * 20, 0), 1.0f)
+                    .effect(new MobEffectInstance(MobEffects.DIG_SPEED, 30 * 20, 2), 1.0f)
+                    .effect(new MobEffectInstance(MobEffects.REGENERATION, 30 * 20, 1), 1.0f)
+                    .effect(new MobEffectInstance(MobEffects.HUNGER, 30 * 20, 1), 1.0f)
+                    .effect(new MobEffectInstance(MobEffects.CONFUSION, 30 * 20, 1), 1.0f)
+                    .build()))),
 
     CRUSHED_COPPER = ingredient("crushed_copper"),
     CRUSHED_ZINC = ingredient("crushed_zinc"),
@@ -35,9 +47,17 @@ public class AllItems {
     ALUMINOSILICATE_BIT = ingredient("aluminosilicate_bit"),
     ALUMINOSILICATE_CHUNK = ingredient("aluminosilicate_chunk"),
     NITROGEN = ingredient("nitrogen"),
-    BLUE_METH = ITEMS.register("blue_meth", () -> new MethItem.Blue(new Item.Properties().tab(ItemGroup.CREATEBB))),
-
-
+    BLUE_METH = ITEMS.register("blue_meth", () -> new MethItem.Blue(new Item.Properties()
+            .tab(ItemGroup.CREATEBB)
+            .food(new FoodProperties.Builder().nutrition(2).saturationMod(0f).alwaysEat()
+                    .effect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 120 * 20, 4), 1.0f)
+                    .effect(new MobEffectInstance(MobEffects.ABSORPTION, 120 * 20, 2), 1.0f)
+                    .effect(new MobEffectInstance(MobEffects.DIG_SPEED, 120 * 20, 5), 1.0f)
+                    .effect(new MobEffectInstance(MobEffects.REGENERATION, 120 * 20, 2), 1.0f)
+                    .effect(new MobEffectInstance(MobEffects.HUNGER, 120 * 20, 3), 1.0f)
+                    .effect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 120 * 20, 2), 1.0f)
+                    .effect(new MobEffectInstance(MobEffects.CONFUSION, 120 * 20, 3), 1.0f)
+                    .build()))),
 
     LIQUID_METHAMPHETAMINE_BUCKET = bucket("liquid_methamphetamine_bucket", AllFluids.LIQUID_METHAMPHETAMINE),
     LIQUID_BLUE_METHAMPHETAMINE_BUCKET = bucket("liquid_blue_methamphetamine_bucket", AllFluids.LIQUID_BLUE_METHAMPHETAMINE),
